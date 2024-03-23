@@ -3,18 +3,19 @@ package service;
 import java.util.Scanner;
 
 import entities.MetodoOrdenacao;
+import entities.Ordenacao;
 
 public class ClienteService {
 	static Scanner input = new Scanner(System.in);
 
 	public static void ordenar(int opcao, int[] list) {
-
-		if (opcao >= 0 && opcao <= 2) {
-			MetodoOrdenacao.values()[opcao].ordenar(list);
+		if(opcao >= 0 && opcao <=2 ) {
+			Ordenacao ordenar = MetodoOrdenacao.values()[opcao].getInstance();
+	        ordenar.ordenar(list);
 		} else {
-			throw new IllegalArgumentException("Opção Inválida");
+			throw new IllegalArgumentException("Opção de Enum inválida.");
 		}
-	}
+    }
 
 	public static void exibir(int[] list) {
 		System.out.print("Lista: ");
